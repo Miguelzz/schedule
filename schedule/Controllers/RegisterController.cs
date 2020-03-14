@@ -47,6 +47,7 @@ namespace documents.Controllers
                     return BadRequest(new { message = "Usuario ya existe." });
                 _user.Add(user);
                 _user.SaveChanges();
+                return StatusCode(200);
             }
             return BadRequest(new { message = validate.Errors });
         }

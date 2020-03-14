@@ -22,23 +22,33 @@ export class HomeComponent implements OnInit {
     console.log('Save button is clicked!', user);
   }
 
-  UserEditSave(name: string, lastName: string, event: Event) {
-    event.preventDefault();
-    // this.loginService.login(email, password).subscribe(
-    //   (res: any) => {
-    //     localStorage.setItem('token', res.token);
-    //   },
-    //   error => {
-    //     if (error.status === 401) {
-    //       console.error('401');
-    //     }
-    //     console.error(error);
-    //   },
-    //   () => this.navigate()
+  editRelation(user: any) {
+    console.log(user, {
+      user2Id: user.id,
+      relation: user.relation
+    });
+
+
+
+    this.userService.editRelation({
+      user2Id: user.id,
+      relation: user.relation
+    }).subscribe(
+      res => {
+        this.getUser();
+      },
+      err => {
+
+        console.log(err);
+      }
+    );
   }
 
-
   ngOnInit() {
+    this.getUser();
+  }
+
+  getUser() {
     this.userService.getUser().subscribe(
       res => {
         this.user = res;

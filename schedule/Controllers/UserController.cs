@@ -61,6 +61,8 @@ namespace documents.Controllers
                             u.User2.Image,
                             u.User2.Phone,
                             u.User2.EMail,
+                            DocumentType = u.User2.DocumentType.GetDescription(),
+                            u.User2.DocumentNumber,
                             u.Relation,
                             RelationName = u.Relation.GetDescription(),
                         }).GroupBy(r => r.Relation)
@@ -85,6 +87,10 @@ namespace documents.Controllers
             try
             {
                 search = search.ToLower();
+                var userId = User.Claims.First(x => x.Type == "UserID").Value;
+                var slave = await _user.User.Include(x => x.Relations).FirstAsync(x => x.Id == int.Parse(userId));
+                var relations = slave.Relations.Select(x => x.User2Id);
+
                 var user = await _user.User
                     .Select(x => new
                     {
@@ -96,6 +102,9 @@ namespace documents.Controllers
                         x.EMail
                     })
                     .Where(x => x.Name.Contains(search) || x.LastName.Contains(search))
+                    .Where(x => !relations.Contains(x.Id))
+                    .Take(20)
+                    
                     .ToListAsync();
 
                 return Ok(user);

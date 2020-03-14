@@ -13,6 +13,16 @@ export class UserService {
   }
 
   getUsers(search) {
-    return this.http.get('/api/user/' + search);
+    if (search) {
+      return this.http.get('/api/user/' + search);
+    }
+  }
+
+  addRelation(relation) {
+    return this.http.post(`/api/relation/`, relation);
+  }
+
+  editRelation(relation) {
+    return this.http.put(`/api/relation/`, relation);
   }
 }
