@@ -5,7 +5,7 @@
             <div class="card hovercard">
                 <div class="cardheader"></div>
                 <div class="avatar">
-                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                    <img alt="" src="{{user.image}}">
                 </div>
                 <div class="info">
                     <div class="title">
@@ -69,27 +69,32 @@
         <div *ngIf="editUser" class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">{{editUser.name}} {{editUser.lastName}}</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{editUser.name}} {{editUser.lastName}} </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <form>
-                        <pre>{{ editUser | json}}</pre>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="inputEmail4">Celular</label>
-                                <input type="text" class="form-control" value="{{editUser.phone}}" disabled>
+                                <label for="inputEmail4">Tipo de documento</label>
+                                <input type="text" class="form-control" value="{{editUser.documentType}}" disabled>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputPassword4">Documento</label>
                                 <input type="text" class="form-control" value="{{editUser.documentNumber}}" disabled>
                             </div>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="inputPassword4">Correo</label>
-                            <input type="text" class="form-control" value="{{editUser.eMail}}" disabled>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Correo</label>
+                                <input type="text" class="form-control" value="{{editUser.eMail}}" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Celular</label>
+                                <input type="text" class="form-control" value="{{editUser.phone}}" disabled>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Relacion</label>

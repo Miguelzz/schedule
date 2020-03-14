@@ -39,6 +39,9 @@ namespace documents.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(User user)
         {
+            Random rnd = new Random();
+            int img = rnd.Next(0, 70);
+            user.Image = $"https://i.pravatar.cc/300?img={img}";
             var validate = _userValidator.Validate(user);
             if (validate.IsValid)
             {
