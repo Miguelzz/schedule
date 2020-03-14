@@ -1,0 +1,102 @@
+<app-nav-menu></app-nav-menu>
+<div class="container">
+    <div *ngIf="user" class="row">
+        <div class="col-12 col-md-3">
+            <div class="card hovercard">
+                <div class="cardheader"></div>
+                <div class="avatar">
+                    <img alt="" src="http://lorempixel.com/100/100/people/9/">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a>{{ user.name }} {{ user.lastName}}</a>
+                    </div>
+                    <div class="desc">{{ user.phone }}</div>
+                    <div class="desc">{{ user.email }}</div>
+
+                    <div class="desc p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aperiam tempore nulla sit eum.</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-12 col-md-9 container-fluid custom-container">
+
+            <div class="row">
+
+                <div class="col-12" *ngFor="let relation of objectKeys(user.relations); let r = index">
+                    <h3 *ngIf="user.relations[relation].length">{{user.relations[relation][0].relationName}}</h3>
+                    <div class="row">
+                        <div *ngFor="let user of user.relations[relation]; let u = index" [attr.data-index]="i" class="col-3" style="display: inline-block;">
+                            <div class="be-post" data-toggle="modal" data-target="#exampleModal" (click)="relationEdit(user)">
+                                <a class="be-img-block">
+                                    <img src="{{user.image}}" alt="omg">
+
+                                </a>
+                                <a class="be-post-title">{{ user.name }} {{ user.lastName}}</a>
+                                <span>
+                                    <a class="be-post-tag">{{ user.phone }}</a>
+                                </span>
+                                <div class="info-block">
+                                    <span><i class="fa fa-thumbs-o-up"></i> 360</span>
+                                    <span><i class="fa fa-eye"></i> 789</span>
+                                    <span><i class="fa fa-comment-o"></i> 20</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div *ngIf="editUser" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">{{editUser.name}}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Relacion</label>
+                            <select [(ngModel)]="editUser.relation" [ngModelOptions]="{standalone: true}" class="form-control" id="exampleFormControlSelect1">
+                                <option value="0">Amigo</option>
+                                <option value="1">Familiar</option>
+                                <option value="2">Colega</option>
+                                <option value="3">Otro</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <a class="add-contact" [routerLink]='["/search"]'><i>+</i></a>
+
+</div>

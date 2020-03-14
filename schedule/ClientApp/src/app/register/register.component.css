@@ -1,0 +1,36 @@
+.bg-register-image {
+    background: url(https://img.freepik.com/foto-gratis/chica-sonriendo-haciendo-autofoto-sus-amigos-alrededor_1139-593.jpg?size=626&ext=jpg);
+    background-position: center;
+    background-size: cover;
+    min-height: 500px;
+}
+
+form.user .btn-user {
+    font-size: .8rem;
+    border-radius: 10rem;
+    padding: .75rem 1rem;
+}
+
+.btn-google {
+    color: #fff;
+    background-color: #ea4335;
+    border-color: #fff;
+}
+
+.btn-facebook {
+    color: #fff;
+    background-color: #3b5998;
+    border-color: #fff;
+}
+
+.bg-gradient-primary {
+    background-color: #4e73df;
+    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.select-h {
+    padding: 9px !important;
+    height: 40px;
+}

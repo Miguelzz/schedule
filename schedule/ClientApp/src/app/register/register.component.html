@@ -1,0 +1,75 @@
+<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Crear Usuario!</h1>
+                        </div>
+                        <form class="user">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" #name class="form-control form-control-user" placeholder="Nombres">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" #lastName class="form-control form-control-user" placeholder="Apellidos">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <select #documentType class="form-control form-control-user  select-h">
+                                    <option hidden selected>Tipo de documento</option>
+                                    <option value="0">Cédula de ciudadanía</option>
+                                    <option value="1">Cédula de extranjería</option>
+                                    <option value="2">Menor sin identificación</option>
+                                    <option value="3">Pasaporte</option>
+                                    <option value="3">Registro Civil</option>
+                                    <option value="3">Tarjeta de identidad</option>
+                                </select>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" #documentNumber class="form-control form-control-user" placeholder="Numero documento">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" #phone class="form-control form-control-user" placeholder="Celular" maxlength="10">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" #email aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user" #password placeholder="Password" placeholder="Contraseña" maxlength="10">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user" placeholder="Repetir Contraseña">
+                                </div>
+                            </div>
+                            <a class="btn btn-primary btn-user btn-block" (click)="register(name.value, lastName.value, email.value, phone.value, password.value, documentType.value, documentNumber.value, $event)">Registrarme</a>
+                            <a style="color: #303030" class="btn btn-outline-info btn-user btn-block" [routerLink]='["/user"]'>Ya soy Miembro</a>
+                            <hr>
+                            <a class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Register with Google
+                            </a>
+                            <a class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            </a>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

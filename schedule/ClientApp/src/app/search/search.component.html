@@ -1,0 +1,20 @@
+<app-nav-menu>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" (input)="getUsers($event.target.value)" placeholder="Buscar" aria-label="Search">
+        <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
+    </form>
+</app-nav-menu>
+<div class="container page-top">
+    <div class="row">
+        <div *ngFor="let user of users; let i=index" [attr.data-index]="i" class="col-md-4 col-xs-6 thumb">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://i.pravatar.cc/300?img={{i}}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.name}} {{user.lastName}}</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a class="btn btn-primary">Añadir a contactos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
